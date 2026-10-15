@@ -1,0 +1,76 @@
+/* ---------- 하단/상단 플로팅 바 ---------- */
+#ccp-bar {
+    position: fixed;
+    top: calc(var(--topBarBlockSize, 40px) + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3000;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    max-width: min(96vw, 760px);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--SmartThemeBorderColor, #888);
+    background: var(--SmartThemeBlurTintColor, rgba(30, 30, 30, 0.92));
+    color: var(--SmartThemeBodyColor, #ddd);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(var(--SmartThemeBlurStrength, 8px));
+    font-size: 13px;
+}
+#ccp-bar.ccp-visible { display: flex; }
+#ccp-bar .ccp-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+#ccp-bar .ccp-title { font-weight: 700; }
+#ccp-bar .ccp-count { color: var(--SmartThemeQuoteColor, #4da3ff); font-weight: 700; }
+#ccp-bar .ccp-src { opacity: 0.75; font-size: 12px; overflow: hidden; text-overflow: ellipsis; max-width: 100%; white-space: nowrap; }
+#ccp-bar .ccp-hint { opacity: 0.6; font-size: 11.5px; }
+#ccp-bar .ccp-spacer { flex: 1 1 auto; }
+#ccp-bar button {
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--SmartThemeBorderColor, #888);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+}
+#ccp-bar button:hover:not(:disabled) { background: rgba(127, 127, 127, 0.25); }
+#ccp-bar button:disabled { opacity: 0.4; cursor: default; }
+#ccp-bar button.ccp-primary { border-color: var(--SmartThemeQuoteColor, #4da3ff); }
+#ccp-bar button.ccp-danger { border-color: #d9534f; }
+
+/* ---------- 메시지 선택 표시 ---------- */
+body.ccp-select-mode #chat .mes { cursor: pointer; user-select: none; -webkit-user-select: none; }
+#chat .mes.ccp-selected {
+    outline: 2px solid var(--SmartThemeQuoteColor, #4da3ff);
+    outline-offset: -2px;
+    background: color-mix(in srgb, var(--SmartThemeQuoteColor, #4da3ff) 14%, transparent);
+}
+#chat .mes.ccp-selected .name_text::before { content: '✓ '; color: var(--SmartThemeQuoteColor, #4da3ff); }
+#chat .mes.ccp-cut-pending { opacity: 0.45; outline: 2px dashed var(--SmartThemeBorderColor, #888); outline-offset: -2px; }
+
+/* ---------- "여기에 붙여넣기" 바 ---------- */
+#chat .ccp-drop {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 6px 0 2px;
+    padding: 5px 8px;
+    border: 1px dashed var(--SmartThemeQuoteColor, #4da3ff);
+    border-radius: 6px;
+    color: var(--SmartThemeQuoteColor, #4da3ff);
+    font-size: 12px;
+    opacity: 0.55;
+    cursor: pointer;
+    user-select: none;
+}
+#chat .ccp-drop:hover { opacity: 1; background: color-mix(in srgb, var(--SmartThemeQuoteColor, #4da3ff) 16%, transparent); }
+body.ccp-paste-mode:not(.ccp-select-mode) #chat .ccp-drop { display: flex; }
+
+/* 붙여넣은 직후 강조 */
+@keyframes ccp-flash {
+    0% { background: color-mix(in srgb, var(--SmartThemeQuoteColor, #4da3ff) 35%, transparent); }
+    100% { background: transparent; }
+}
+#chat .mes.ccp-flash { animation: ccp-flash 1.8s ease-out; }
