@@ -4,11 +4,7 @@
 원하는 위치에 붙여넣는 확장입니다.
 
 ## 설치
-1. 이 폴더를 통째로 아래 위치에 넣기
-   - `SillyTavern/public/scripts/extensions/third-party/st-chat-cutpaste/`
-   - 또는 `SillyTavern/data/<유저명>/extensions/st-chat-cutpaste/`
-2. 브라우저 새로고침 (확장 메뉴에서 활성화되어 있는지 확인)
-3. 기존 "CutPaste V1.3" 스크립트는 끄기 (메뉴 항목이 중복됩니다)
+1. https://github.com/J-M-GRK/chat-cutpaste 해당 주소를 실리태번 확장 설치에 붙여넣습니다.
 
 ## 사용법
 1. **선택 시작**: 메시지 우측 `...` 버튼 안의 ✂ 아이콘, 또는 마법봉(확장) 메뉴의 "채팅 선택"
