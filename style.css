@@ -38,6 +38,16 @@
 #ccp-bar button:disabled { opacity: 0.4; cursor: default; }
 #ccp-bar button.ccp-primary { border-color: var(--SmartThemeQuoteColor, #4da3ff); }
 #ccp-bar button.ccp-danger { border-color: #d9534f; }
+#ccp-bar button.ccp-active {
+    border-color: var(--SmartThemeQuoteColor, #4da3ff);
+    background: color-mix(in srgb, var(--SmartThemeQuoteColor, #4da3ff) 30%, transparent);
+}
+
+/* 터치 화면: 버튼을 손가락으로 누르기 쉽게 */
+@media (pointer: coarse) {
+    #ccp-bar button { min-height: 34px; padding: 6px 12px; }
+    #chat .ccp-drop { padding: 9px 8px; opacity: 0.75; }
+}
 
 /* ---------- 메시지 선택 표시 ---------- */
 body.ccp-select-mode #chat .mes { cursor: pointer; user-select: none; -webkit-user-select: none; }
